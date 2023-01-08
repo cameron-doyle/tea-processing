@@ -1,5 +1,4 @@
-import webp_enc from './webp/webp_enc'
-//TODO add nodejs support (add browser checks and switch logic used)
+import webp_enc from './webp/webp_enc.js'
 
 /**
  * Takes a file object and returns a blob
@@ -220,7 +219,7 @@ export async function scale(imgBlob, px, on) {
 /**
  * Crops an image according the provided cropOptions object
  * @param {Blob} imgBlob image data in blob format
- * @param {object} cropOptions {top?:number, right?:number, bottom?:number, left?:number}
+ * @param {CropObject} cropOptions { top?:number, right?:number, bottom?:number, left?:number }
  * @returns {Promise<Blob>} cropped image Blob
  */
 export async function crop(imgBlob, cropOptions) {
@@ -274,9 +273,24 @@ export async function getDimensions(imgBlob) {
 	})
 }
 
+/**
+ * Evaluates and returns the aspect ratio of an image
+ * @param {Blob} imgBlob imageBlob
+ * @returns {number} Aspect Ratio as decimal
+ */
+export async function getRatio(imgBlob){
+	const {width, height} = await getDimensions(imgBlob)
+	return width/height
+}
+
+/* const exports = {}
+
 exports.getBlob = getBlob
 exports.webpCompress = webpCompress
 exports.applyRatio = applyRatio
 exports.scale = scale
 exports.crop = crop
 exports.getDimensions = getDimensions
+exports.test = test
+
+export default exports */
