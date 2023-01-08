@@ -2,7 +2,7 @@
   "name": "tea-processing",
   "version": "1.0.0",
   "description": "browser side image processing/compression",
-  "main": "index.js",
+  "main": "tea-processing.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,10 +1,42 @@
 # tea-processing
-client-side (browser) image processing with support for webp compression.
+<p>Browser image processing with support for webp compression. Made for the purpose of reducing server load and hosting costs by offloading image processing to the clients browser.</p>
 
-# use
-tba
+## Features
+- Webp compression (Googles official codec)
+- Scaling
+- Croping
+- Aspect ratio
 
-# browser
-native, copy the files into your project folder, and use type="module" on the script tag. (any js files that use the library require type=modules to be able to use the import syntax).
-webpack + babel (with @babel/plugin-syntax-dynamic-import) https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import
-babel + browserify
+## Setup
+### Vanilla HTML/JavaScript
+- Download the files from [GitHub](https://github.com/cameron-doyle/tea-processing) and add them to your project dir (make sure to maintain the directory structure).
+- Include the index.js file in your HTML
+```html
+<script src="tea-processing.js" type="module"></script>
+```
+- Create main JavaScript file and import library
+```js
+import * as tp from "tea-processing.js";
+```
+- Include the main js file as a module.
+```html
+<script src="tea-processing.js" type="module"></script>
+<script src="main.js" type="module"></script>
+```
+### ReactJS
+TBD
+### NodeJS
+This library relies on Canvas which isn't available on Node natively, it is highly recommended to use a [polyfill](https://remysharp.com/2010/10/08/what-is-a-polyfill) with a package like [this one.](https://www.npmjs.com/package/canvas)
+
+
+
+
+
+
+
+
+## Usage
+TBD
+
+## Examples
+TBD
