@@ -2,7 +2,7 @@ import webp_enc from './webp/webp_enc.js'
 
 /**
  * Takes a file object and returns a blob
- * @param {object} imgFile https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#getting_information_on_selected_files
+ * @param {File} imgFile https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#getting_information_on_selected_files
  * @returns {Promise<Blob>} Image Blob
  */
 export async function getBlob(imgFile) {
@@ -282,15 +282,3 @@ export async function getRatio(imgBlob){
 	const {width, height} = await getDimensions(imgBlob)
 	return width/height
 }
-
-/* const exports = {}
-
-exports.getBlob = getBlob
-exports.webpCompress = webpCompress
-exports.applyRatio = applyRatio
-exports.scale = scale
-exports.crop = crop
-exports.getDimensions = getDimensions
-exports.test = test
-
-export default exports */
