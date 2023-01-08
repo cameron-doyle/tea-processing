@@ -1,4 +1,5 @@
 import webp_enc from './webp/webp_enc'
+//TODO add nodejs support (add browser checks and switch logic used)
 
 /**
  * Takes a file object and returns a blob
@@ -273,3 +274,9 @@ export async function getDimensions(imgBlob) {
 	})
 }
 
+exports.getBlob = getBlob
+exports.webpCompress = webpCompress
+exports.applyRatio = applyRatio
+exports.scale = scale
+exports.crop = crop
+exports.getDimensions = getDimensions

@@ -1,0 +1,32 @@
+{
+  "name": "tea-processing",
+  "version": "1.0.0",
+  "description": "browser side image processing/compression",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cameron-doyle/tea-processing.git"
+  },
+  "keywords": [
+    "webp",
+    "compression",
+    "image",
+    "processing",
+    "crop",
+    "scale",
+    "aspect",
+    "ratio",
+    "browser",
+    "client",
+    "side"
+  ],
+  "author": "Cameron Doyle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cameron-doyle/tea-processing/issues"
+  },
+  "homepage": "https://github.com/cameron-doyle/tea-processing#readme"
+}
