@@ -47,10 +47,10 @@ async function getImageData(imgBlob) {
 /**
  * Compresses an image Blob
  * @param {Blob} imgBlob 
- * @param {Number} quality between 0 and 100
+ * @param {Number?} quality between 0 and 100. Default 75
  * @returns {Promise<Blob>} compressed image blob
  */
-export async function compress(imgBlob, quality) {
+export async function compress(imgBlob, quality = 75) {
 	/* 
 		The webp codec files came from: https://github.com/cameron-doyle/squoosh/tree/dev/codecs/webp/enc
 		The example used to understand the codec: https://github.com/cameron-doyle/squoosh/blob/dev/codecs/webp/enc/example.html
