@@ -1,6 +1,15 @@
 # tea-processing
 <p>Browser image processing with support for webp compression. Made for the purpose of reducing server load and hosting costs by offloading image processing to the clients browser.</p>
 
+## Index
+- [Features](#features)
+- [Setup](#setup)
+	- [Vanilla HTML/JavaScript](#vanilla-htmljavascript)
+	- [ReactJS](#reactjs)
+	- [NodeJS](#nodejs)
+- [Usage](#usage)
+- [Examples](#examples)
+
 ## Features
 - Webp compression (Googles official codec)
 - Scaling
