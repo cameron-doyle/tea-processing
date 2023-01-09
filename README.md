@@ -2,6 +2,7 @@
 <p>Browser image processing with support for webp compression. Made for the purpose of reducing server load and hosting costs by offloading image processing to the clients browser.</p>
 
 ## Index
+- [Prerequisites](#prerequisites)
 - [Features](#features)
 - [Setup](#setup)
 	- [Vanilla HTML/JavaScript](#vanilla-htmljavascript)
@@ -24,11 +25,15 @@
 	- [Get Dimensions](#get-dimensions)
 	- [Get Ratio](#get-ratio)
 
+## Prerequisites
+- [WASM](https://caniuse.com/wasm) support
+- [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) support (not native for NodeJS)
+
 ## Features
-- Webp compression (Googles official codec)
-- Scaling
-- Croping
-- Aspect ratio
+- [Webp compression](#compressimgblob-quality) (Implemented with [Google's official codec](https://chromium.googlesource.com/webm/libwebp))
+- [Scaling](#scaleimgblob-px-on)
+- [Croping](#cropimgblob-cropoptions)
+- [Aspect ratio](#applyratioimgblob-ratio-targetresolution)
 
 ## Setup
 ### Vanilla HTML/JavaScript
@@ -36,29 +41,31 @@
 
 - Create main JavaScript file and import library
 ```js
-import * as tp from "tea-processing.js";
-```
-OR
-```js
 import {compress, crop, etc} from "tea-processing.js";
 ```
 
 - Include the main js file as a module.
 ```html
-<script src="tea-processing.js" type="module"></script>
 <script src="main.js" type="module"></script>
 ```
 
 <br>
 
 ### ReactJS
-TBD
+- Install the npm package
+```cli
+npm i tea-processing
+```
+- Import the package in your code
+```js
+import {compress, crop, etc} from "tea-processing.js";
+```
 
 <br>
 
 ### NodeJS
 This library relies on Canvas which isn't available on Node natively, it is highly recommended to use a [polyfill](https://remysharp.com/2010/10/08/what-is-a-polyfill) with a package like [this one.](https://www.npmjs.com/package/canvas)
-
+(Yet to have tested)
 
 
 <br>
@@ -154,7 +161,8 @@ let imgBlob = await getBlob(e.target.files[0])
 
 ### [Compress](#compressimgblob-quality)
 ```js
-imgBlob = await compress(imgBlob, 50) //50% quality
+//compress to 50% quality
+imgBlob = await compress(imgBlob, 50)
 ```
 
 <br>
