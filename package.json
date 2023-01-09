@@ -1,6 +1,6 @@
 {
   "name": "tea-processing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "browser side image processing/compression",
   "main": "tea-processing.js",
   "scripts": {
