@@ -278,7 +278,7 @@ export async function getDimensions(imgBlob) {
  * @param {Blob} imgBlob imageBlob
  * @returns {Promise<float>} Aspect Ratio as decimal
  */
-export async function getRatio(imgBlob){
-	const {width, height} = await getDimensions(imgBlob)
-	return width/height
+export async function getRatio(imgBlob) {
+	const { width, height } = await getDimensions(imgBlob)
+	return width / height
 }
