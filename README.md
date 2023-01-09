@@ -37,7 +37,7 @@
 
 ## Setup
 ### Vanilla HTML/JavaScript
-- Download the files from [GitHub](https://github.com/cameron-doyle/tea-processing) and add them to your project dir (make sure to maintain the directory structure).
+- Download the files (tea-processing.js and webp directory) from [GitHub](https://github.com/cameron-doyle/tea-processing) and add them to your project (make sure to maintain the directory structure).
 
 - Create main JavaScript file and import library
 ```js
