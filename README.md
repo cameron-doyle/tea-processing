@@ -2,7 +2,7 @@
 <p>Browser image processing with support for webp compression. Made for the purpose of reducing server load and hosting costs by offloading image processing to the clients browser.</p>
 
 ## Index
-- [Prerequisites](#prerequisites)
+- [Requirements](#requirements)
 - [Features](#features)
 - [Setup](#setup)
 	- [Vanilla HTML/JavaScript](#vanilla-htmljavascript)
@@ -25,9 +25,9 @@
 	- [Get Dimensions](#get-dimensions)
 	- [Get Ratio](#get-ratio)
 
-## Prerequisites
+## Requirements
 - [WASM](https://caniuse.com/wasm) support
-- [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) support (not native for NodeJS)
+- [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) support
 
 ## Features
 - [Webp compression](#compressimgblob-quality) (Implemented with [Google's official codec](https://chromium.googlesource.com/webm/libwebp))
@@ -58,14 +58,9 @@ npm i tea-processing
 ```
 - Import the package in your code
 ```js
-import {compress, crop, etc} from "tea-processing.js";
+import {compress, crop, etc} from "tea-processing";
 ```
 
-<br>
-
-### NodeJS
-This library relies on Canvas which isn't available on Node natively, it is highly recommended to use a [polyfill](https://remysharp.com/2010/10/08/what-is-a-polyfill) with a package like [this one.](https://www.npmjs.com/package/canvas)
-(Yet to have tested)
 
 
 <br>
