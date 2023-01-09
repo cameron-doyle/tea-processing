@@ -47,7 +47,7 @@ async function getImageData(imgBlob) {
 /**
  * Compresses an image Blob
  * @param {Blob} imgBlob 
- * @param {Number?} quality between 0 and 100. Default 75
+ * @param {number?} quality between 0 and 100. Default 75
  * @returns {Promise<Blob>} compressed image blob
  */
 export async function compress(imgBlob, quality = 75) {
@@ -95,8 +95,8 @@ export async function compress(imgBlob, quality = 75) {
  * Applies an aspect ratio: https://en.wikipedia.org/wiki/Aspect_ratio_%28image%29#Still_photography
  * NOTE: if you use scaling, apply the scaling before applying the ratio, it leads to more consistant ratios.
  * @param {Blob} imgBlob 
- * @param {Float} ratio Decimal ratio, pass in a division like 4/3 or 16/9, see wikipedia page for standard ratios
- * @param {object} targetResolution object that determines the desired width or height in pixels, format: {px:number, dimention:string = "width" or "height"}
+ * @param {float} ratio Decimal ratio, pass in a division like 4/3 or 16/9, see wikipedia page for standard ratios
+ * @param {object?} targetResolution object that determines the desired width or height in pixels, format: {px:number, dimention:string = "width" or "height"}
  * @returns {Promise<Blob>} cropped img blob
  */
 export async function applyRatio(imgBlob, ratio, targetResolution = null) {
@@ -175,8 +175,8 @@ export async function applyRatio(imgBlob, ratio, targetResolution = null) {
 
 /**
  * Scales an images width/height up/down to a specified size in pixels
- * @param {Blob|File} imgBlob 
- * @param {Number} px desired size in pixels
+ * @param {Blob} imgBlob 
+ * @param {number} px desired size in pixels
  * @param {string} on either "width" || "height"
  * @returns {Promise<Blob>} scaled image Blob
  */
@@ -219,7 +219,7 @@ export async function scale(imgBlob, px, on) {
 /**
  * Crops an image according the provided cropOptions object
  * @param {Blob} imgBlob image data in blob format
- * @param {CropObject} cropOptions { top?:number, right?:number, bottom?:number, left?:number }
+ * @param {object} cropOptions { top?:number, right?:number, bottom?:number, left?:number }
  * @returns {Promise<Blob>} cropped image Blob
  */
 export async function crop(imgBlob, cropOptions) {
@@ -276,7 +276,7 @@ export async function getDimensions(imgBlob) {
 /**
  * Evaluates and returns the aspect ratio of an image
  * @param {Blob} imgBlob imageBlob
- * @returns {number} Aspect Ratio as decimal
+ * @returns {Promise<float>} Aspect Ratio as decimal
  */
 export async function getRatio(imgBlob){
 	const {width, height} = await getDimensions(imgBlob)
