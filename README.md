@@ -1,4 +1,4 @@
-# tea-processing
+# Tea Processing
 <p>Browser image processing with support for webp compression. Made for the purpose of reducing server load and hosting costs by offloading image processing to the clients browser.</p>
 
 ## Index
@@ -7,8 +7,22 @@
 	- [Vanilla HTML/JavaScript](#vanilla-htmljavascript)
 	- [ReactJS](#reactjs)
 	- [NodeJS](#nodejs)
-- [Usage](#usage)
+- [API](#api)
+	- [Get Blob](#getblobimgfile)
+	- [Compress](#compressimgblob-quality)
+	- [Apply Ratio](#applyratioimgblob-ratio-targetresolution)
+	- [Scale](#scaleimgblob-px-on)
+	- [Crop](#cropimgblob-cropoptions)
+	- [Get Dimensions](#getdimensionsimgblob)
+	- [Get Ratio](#getratioimgblob)
 - [Examples](#examples)
+	- [Get Blob](#get-blob)
+	- [Compress](#compress)
+	- [Apply Ratio](#apply-ratio)
+	- [Scale](#scale)
+	- [Crop](#crop)
+	- [Get Dimensions](#get-dimensions)
+	- [Get Ratio](#get-ratio)
 
 ## Features
 - Webp compression (Googles official codec)
@@ -19,33 +33,165 @@
 ## Setup
 ### Vanilla HTML/JavaScript
 - Download the files from [GitHub](https://github.com/cameron-doyle/tea-processing) and add them to your project dir (make sure to maintain the directory structure).
-- Include the index.js file in your HTML
-```html
-<script src="tea-processing.js" type="module"></script>
-```
+
 - Create main JavaScript file and import library
 ```js
 import * as tp from "tea-processing.js";
 ```
+OR
+```js
+import {compress, crop, etc} from "tea-processing.js";
+```
+
 - Include the main js file as a module.
 ```html
 <script src="tea-processing.js" type="module"></script>
 <script src="main.js" type="module"></script>
 ```
+
+<br>
+
 ### ReactJS
 TBD
+
+<br>
+
 ### NodeJS
 This library relies on Canvas which isn't available on Node natively, it is highly recommended to use a [polyfill](https://remysharp.com/2010/10/08/what-is-a-polyfill) with a package like [this one.](https://www.npmjs.com/package/canvas)
 
 
 
+<br>
+
+## API
+### [getBlob(imgFile)](#get-blob)
+Returns a `Promise<Blob>` with the image data.
+
+#### imgFile
+Type: [`File`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#getting_information_on_selected_files)
+
+<br>
+
+### [compress(imgBlob, quality?)](#compress)
+Returns a `Promise<Blob>` with the compressed image data.
+
+#### imgBlob
+Type: `Blob`
+
+#### quality (optional)
+Type: `number`<br>
+Default: `75`
+
+<br>
+
+### [applyRatio(imgBlob, ratio, targetResolution?)](#apply-ratio)
+Returns a `Promise<Blob>` with the image data that's been cropped to right the desired ratio.
+
+#### imgBlob
+Type: `Blob`
+
+#### ratio
+Type: `Float`
+
+#### targetResolution (optional)
+Type: `object` | `null` { **px**:`number`, **dimention**:`string` = `"width"` or `"height"` }<br>
+Determines the desired width or height in pixels to scale to.
+
+<br>
+
+### [scale(imgBlob, px, on)](#scale)
+Returns a `Promise<Blob>` with the image data that's been scaled up or down, to meet the desired resolution on either the width or height, while maintaining the original aspect ratio.
+
+#### imgBlob
+Type: `Blob`
+
+#### px
+Type: `number`
+
+#### on
+Type: `string` = `"width"` | `"height"`
+
+<br>
+
+### [crop(imgBlob, cropOptions)](#crop)
+Returns a `Promise<Blob>` with the image data that's been cropped.
+
+#### imgBlob
+Type: `Blob`
+
+#### cropOptions
+Type: `object` { **top**?:`number`, **right**?:`number`, **bottom**?:`number`, **left**?:`number` }<br>
+Example: If you wanted to crop 20px from the top, and 3px from the right, you would pass **{ top:20, right:3 }**
+
+<br>
+
+### [getDimensions(imgBlob)](#get-dimensions)
+Returns a `Promise<object>` ***{ width: number, height: number }*** with the images width and height in pixels 
+
+#### imgBlob
+Type: `Blob`
+
+<br>
+
+### [getRatio(imgBlob)](#get-ratio)
+Returns a `Promise<float>` with the images aspect ratio
+
+#### imgBlob
+Type: `Blob`
 
 
 
-
-
-## Usage
-TBD
+<br>
 
 ## Examples
-TBD
+### [Get Blob](#getblobimgfile)
+```js
+//e.target is referencing a HTML file input
+let imgBlob = await getBlob(e.target.files[0])
+```
+
+<br>
+
+### [Compress](#compressimgblob-quality)
+```js
+imgBlob = await compress(imgBlob, 50) //50% quality
+```
+
+<br>
+
+### [Apply Ratio](#applyratioimgblob-ratio-targetresolution)
+A target height of 1080 at the ratio of **16/9** will produce an image with the resolution of ***1920*** by ***1080*** pixels.
+```js
+imgBlob = await applyRatio(imgBlob, 16/9, { px:1080, dimention:"height" })
+```
+
+<br>
+
+### [Scale](#scaleimgblob-px-on)
+NOTE: if you're using [Apply Ratio](#applyratioimgblob-ratio-targetresolution), it's more reliable to use the built in [scaling parameter](#targetresolution-optional) that's provided by Apply Ratio rather than the [scale](#scaleimgblob-px-on) function
+```js
+imgBlob = await scale(imgBlob, 1080, "height")
+```
+
+<br>
+
+### [Crop](#cropimgblob-cropoptions)
+```js
+imgBlob = await crop(imgBlob, { left: 40, right: 20 })
+```
+
+<br>
+
+### [Get Dimensions](#getdimensionsimgblob)
+```js
+const dimensions = await getDimensions(imgBlob)
+```
+
+<br>
+
+### [Get Ratio](#getratioimgblob)
+```js
+//container is referencing a HTML div
+const ratio = await getRatio(imgBlob)
+container.setAttribute("style", `aspect-ratio: ${ratio};`)
+```
