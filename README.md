@@ -165,7 +165,7 @@ imgBlob = await compress(imgBlob, 50)
 ### [Apply Ratio](#applyratioimgblob-ratio-targetresolution)
 A target height of 1080 at a ratio of **16/9** will produce an image with a resolution of ***1920*** by ***1080*** pixels.
 ```js
-imgBlob = await applyRatio(imgBlob, 16/9, { px:1080, dimention:"height" })
+imgBlob = await applyRatio(imgBlob, 16/9, { px:1080, dimension:"height" })
 ```
 
 <br>
