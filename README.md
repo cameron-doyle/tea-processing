@@ -1,5 +1,5 @@
 # Tea Processing
-<p>Browser image processing with support for webp compression. Made for the purpose of reducing server load and hosting costs by offloading image processing to the clients browser.</p>
+<p>Browser image processing with support for webp compression. Made for the purpose of reducing server load and hosting costs by offloading image processing to the client's browser.</p>
 
 ## Index
 - [Requirements](#requirements)
@@ -32,14 +32,14 @@
 ## Features
 - [Webp compression](#compressimgblob-quality) (Implemented with [Google's official codec](https://chromium.googlesource.com/webm/libwebp))
 - [Scaling](#scaleimgblob-px-on)
-- [Croping](#cropimgblob-cropoptions)
+- [Cropping](#cropimgblob-cropoptions)
 - [Aspect ratio](#applyratioimgblob-ratio-targetresolution)
 
 ## Setup
 ### Vanilla HTML/JavaScript
 - Download the files (tea-processing.js and webp directory) from [GitHub](https://github.com/cameron-doyle/tea-processing) and add them to your project **(make sure to maintain the directory structure)**.
 
-- Create main JavaScript file and import library
+- Create the main JavaScript file and import the library
 ```js
 import {compress, crop, etc} from "tea-processing.js";
 ```
@@ -96,7 +96,7 @@ Type: `Blob`
 Type: `Float`
 
 #### targetResolution (optional)
-Type: `object` | `null` { **px**:`number`, **dimention**:`string` = `"width"` or `"height"` }<br>
+Type: `object` | `null` { **px**:`number`, **dimension**:`string` = `"width"` or `"height"` }<br>
 Determines the desired width or height in pixels to scale to.
 
 <br>
@@ -163,7 +163,7 @@ imgBlob = await compress(imgBlob, 50)
 <br>
 
 ### [Apply Ratio](#applyratioimgblob-ratio-targetresolution)
-A target height of 1080 at the ratio of **16/9** will produce an image with the resolution of ***1920*** by ***1080*** pixels.
+A target height of 1080 at a ratio of **16/9** will produce an image with a resolution of ***1920*** by ***1080*** pixels.
 ```js
 imgBlob = await applyRatio(imgBlob, 16/9, { px:1080, dimention:"height" })
 ```
@@ -171,7 +171,7 @@ imgBlob = await applyRatio(imgBlob, 16/9, { px:1080, dimention:"height" })
 <br>
 
 ### [Scale](#scaleimgblob-px-on)
-NOTE: if you're using [Apply Ratio](#applyratioimgblob-ratio-targetresolution), it's more reliable to use the built in [scaling parameter](#targetresolution-optional) that's provided by Apply Ratio rather than the [scale](#scaleimgblob-px-on) function
+NOTE: if you're using [Apply Ratio](#applyratioimgblob-ratio-targetresolution), it's more reliable to use the built-in [scaling parameter](#targetresolution-optional) that's provided by Apply Ratio rather than the [scale](#scaleimgblob-px-on) function
 ```js
 imgBlob = await scale(imgBlob, 1080, "height")
 ```
