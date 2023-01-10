@@ -96,20 +96,20 @@ export async function compress(imgBlob, quality = 75) {
  * NOTE: if you use scaling, apply the scaling before applying the ratio, it leads to more consistant ratios.
  * @param {Blob} imgBlob 
  * @param {float} ratio Decimal ratio, pass in a division like 4/3 or 16/9, see wikipedia page for standard ratios
- * @param {object?} targetResolution object that determines the desired width or height in pixels, format: {px:number, dimention:string = "width" or "height"}
+ * @param {object?} targetResolution object that determines the desired width or height in pixels, format: {px:number, dimension:string = "width" or "height"}
  * @returns {Promise<Blob>} cropped img blob
  */
 export async function applyRatio(imgBlob, ratio, targetResolution = null) {
 	//InverseRatio is used on width, ratio is used on height
 	const inverseRatio = 1 / ratio
 
-	//If scaleOptions isn't undefined, and both px & dimention isn't undefined, and px is a positive number, and dimentions is either "width" or "height"
-	if (targetResolution !== undefined && (targetResolution.px !== undefined && targetResolution.px > 0) && (targetResolution.dimention !== undefined && (targetResolution.dimention === "width" || targetResolution.dimention === "height"))) {
+	//If scaleOptions isn't undefined, and both px & dimension isn't undefined, and px is a positive number, and dimensions is either "width" or "height"
+	if (targetResolution !== undefined && (targetResolution.px !== undefined && targetResolution.px > 0) && (targetResolution.dimension !== undefined && (targetResolution.dimension === "width" || targetResolution.dimension === "height"))) {
 		//The target w/h after scaling and ratio applied
 		let optimalWidth, optimalHeight
 
 		//Calculate optimal (desired final) w/h based on which was provided
-		if (targetResolution.dimention === "height") {
+		if (targetResolution.dimension === "height") {
 			optimalWidth = parseFloat(ratio * targetResolution.px).toFixed(0)
 			optimalHeight = Number(targetResolution.px);
 		} else {
@@ -117,7 +117,7 @@ export async function applyRatio(imgBlob, ratio, targetResolution = null) {
 			optimalWidth = Number(targetResolution.px);
 		}
 
-		//calculate the diff between the optimal dimentions and actual dimentions (make positive if negative)
+		//calculate the diff between the optimal dimensions and actual dimensions (make positive if negative)
 		let actualDi = await getDimensions(imgBlob)
 
 		let wDiff = actualDi.width - optimalWidth
